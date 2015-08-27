@@ -1,0 +1,44 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.3.0'
+        classpath "com.android.databinding:dataBinder:1.0-rc1"
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.7'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    buildToolsVersion = '23.0.0'
+    minSdkVersion = 9
+    compileSdkVersion = 23
+    targetSdkVersion = 22
+
+    support = 'com.android.support:appcompat-v7:23.0.0'
+    design =  'com.android.support:design:23.0.0'
+    rxJava = 'io.reactivex:rxjava:1.0.14'
+    rxAndroid = 'io.reactivex:rxandroid:1.0.1'
+    retrofit = 'com.squareup.retrofit:retrofit:1.9.0'
+    okhttp = 'com.squareup.okhttp:okhttp:2.4.0'
+    okhttpUrlConnection = 'com.squareup.okhttp:okhttp-urlconnection:2.4.0'
+    gson = 'com.google.code.gson:gson:2.3.1'
+    jsr250 = 'javax.annotation:jsr250-api:1.0'
+    dagger = 'com.google.dagger:dagger:2.0'
+    daggerCompiler = 'com.google.dagger:dagger-compiler:2.0'
+}

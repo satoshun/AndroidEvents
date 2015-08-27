@@ -1,0 +1,6 @@
+<resources>
+    <declare-styleable name="BaseTheme">
+        <attr name="actionBarIconColor" format="color" />
+        <attr name="actionBarInsetStart" format="dimension" />
+    </declare-styleable>
+</resources>
