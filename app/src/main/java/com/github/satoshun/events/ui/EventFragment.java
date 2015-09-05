@@ -1,5 +1,6 @@
 package com.github.satoshun.events.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
@@ -13,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 
 import com.github.satoshun.events.R;
@@ -170,6 +172,11 @@ public class EventFragment extends BaseFragment implements EventPresenter.EventV
 
     @Override
     public void clearCurrentFocus() {
-        getActivity().getCurrentFocus().clearFocus();
+        View view = getActivity().getCurrentFocus();
+        if (view != null) {
+            view.clearFocus();
+            InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 }

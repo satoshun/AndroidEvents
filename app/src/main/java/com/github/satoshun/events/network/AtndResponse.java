@@ -4,6 +4,7 @@ package com.github.satoshun.events.network;
 import com.github.satoshun.events.domain.Events;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -79,7 +80,7 @@ public class AtndResponse implements Events {
         }
     }
 
-    public static class AtndEvent {
+    public static class AtndEvent implements Serializable {
         public int event_id;
         public String title;
         public String description;

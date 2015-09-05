@@ -13,7 +13,14 @@
             <ListView android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@android:id/list" />
+
         </android.support.v4.widget.SwipeRefreshLayout>
+
+        <TextView
+            android:id="@android:id/empty"
+            android:text="@string/empty_search_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </FrameLayout>
 </layout>

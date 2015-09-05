@@ -18,4 +18,5 @@
     <string name="interest">興味があるワード</string>
 
     <string name="error">再読み込み</string>
+    <string name="empty_search_history">検索履歴はありません</string>
 </resources>

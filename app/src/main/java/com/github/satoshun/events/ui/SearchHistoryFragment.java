@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
+import com.github.satoshun.events.R;
 import com.github.satoshun.events.databinding.FragmentSearchHistoryBinding;
 import com.github.satoshun.events.ui.adapter.SearchHistoryAdapter;
 import com.github.satoshun.events.ui.presenter.SearchHistoryPresenter;
@@ -47,6 +48,7 @@ public class SearchHistoryFragment extends BaseFragment implements SearchHistory
         super.onViewCreated(view, savedInstanceState);
 
         SearchHistoryAdapter = new SearchHistoryAdapter(getContext());
+        binding.list.setEmptyView(binding.empty);
         binding.list.setAdapter(SearchHistoryAdapter);
         binding.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
