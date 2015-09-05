@@ -9,6 +9,11 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_search">Example action</string>
-
     <string name="action_settings">Settings</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="detail">詳細</string>
+    <string name="event_transition">event_transition</string>
 </resources>

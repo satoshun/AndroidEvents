@@ -1,0 +1,80 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.text.Html" />
+        <variable name="event" type="com.github.satoshun.events.domain.Events.Event"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/root_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/toolbar_actionbar" />
+
+        <LinearLayout
+            android:id="@+id/footer"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/detail"
+                style="@style/Button.Flat.Red" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar_actionbar"
+            android:layout_above="@+id/footer" >
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/card_padding_horizontal"
+                android:paddingRight="@dimen/card_padding_horizontal"
+                android:paddingTop="@dimen/card_padding_vertical"
+                android:paddingBottom="@dimen/card_padding_vertical">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:text="@{event.title()}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:transitionName="@string/event_transition"
+                    style="@style/Title.EventDetail" />
+
+                <TextView
+                    android:id="@+id/short_description"
+                    android:text="@{event.description()}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp" />
+
+                <TextView
+                    android:id="@+id/address"
+                    android:text="@{event.address()}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp" />
+
+                <TextView
+                    android:id="@+id/long_description"
+                    android:text="@{Html.fromHtml(event.longDescription())}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+
+</layout>

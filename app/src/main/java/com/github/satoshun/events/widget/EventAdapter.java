@@ -5,17 +5,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
 
-import com.github.satoshun.events.R;
-import com.github.satoshun.events.model.Events.Event;
+import com.github.satoshun.events.databinding.AdapterEventBinding;
+import com.github.satoshun.events.domain.Events.Event;
 
+import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import rx.functions.Action1;
 
 public class EventAdapter extends BaseAdapter implements Action1<List<? extends Event>> {
+
+    private final static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
 
     private List<? extends Event> events = Collections.emptyList();
     private LayoutInflater inflater;
@@ -43,11 +47,16 @@ public class EventAdapter extends BaseAdapter implements Action1<List<? extends 
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
         if (view == null) {
-            view = inflater.inflate(R.layout.adapter_event, parent, false);
+            AdapterEventBinding binding = AdapterEventBinding.inflate(inflater, parent, false);
+            view = binding.getRoot();
+            view.setTag(binding);
         }
 
+        AdapterEventBinding binding = (AdapterEventBinding) view.getTag();
         Event event = getItem(position);
-        ((TextView) view.findViewById(R.id.title)).setText(event.title());
+        binding.setEvent(event);
+        binding.setDateFormat(DATE_FORMAT);
+
         return view;
     }
 

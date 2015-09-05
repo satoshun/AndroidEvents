@@ -1,7 +1,10 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="BaseAppTheme">
+    </style>
+
+    <style name="BaseAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="actionBarInsetStart">@dimen/keyline_2</item>
         <item name="actionBarIconColor">#fff</item>
 
@@ -30,7 +33,58 @@
 
     <style name="HeaderBar">
         <item name="android:background">?colorPrimary</item>
-        <item name="android:elevation">@dimen/headerbar_elevation</item>
+    </style>
+
+    <style name="Title">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Title.Event">
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="Title.EventDetail">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Description">
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="Description.Event">
+        <item name="android:maxLines">3</item>
+    </style>
+
+    <style name="Address">
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="Address.Event">
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <!-- btn -->
+    <style name="Button" parent="android:style/Widget.Button">
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+    </style>
+
+    <style name="Button.Flat">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:paddingRight">18dp</item>
+        <item name="android:paddingLeft">18dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+    </style>
+
+    <style name="Button.Flat.Red">
+        <item name="android:background">@drawable/red_btn</item>
     </style>
 
 </resources>

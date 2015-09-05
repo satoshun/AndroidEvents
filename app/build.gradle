@@ -38,6 +38,4 @@ dependencies {
     compile rootProject.ext.jsr250
     compile rootProject.ext.dagger
     apt rootProject.ext.daggerCompiler
-
-    testCompile 'junit:junit:4.12'
 }

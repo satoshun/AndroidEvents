@@ -1,10 +1,57 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" >
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</RelativeLayout>
+    <data>
+        <variable name="event" type="com.github.satoshun.events.domain.Events.Event"/>
+        <variable name="dateFormat" type="java.text.SimpleDateFormat"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/card_padding_horizontal"
+        android:paddingRight="@dimen/card_padding_horizontal"
+        android:paddingTop="@dimen/card_padding_vertical"
+        android:paddingBottom="@dimen/card_padding_vertical">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{event.title()}"
+            android:transitionName="@string/event_transition"
+            style="@style/Title.Event" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_below="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{event.description()}"
+            style="@style/Description.Event" />
+
+        <TextView
+            android:id="@+id/participant"
+            android:layout_below="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{String.format("%d / %d", event.accepted(), event.limit())}' />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_below="@+id/participant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{event.address()}" />
+
+        <TextView
+            android:id="@+id/started_at"
+            android:layout_below="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{dateFormat.format(event.startedAt())}"
+            style="@style/Address.Event" />
+
+    </RelativeLayout>
+
+</layout>

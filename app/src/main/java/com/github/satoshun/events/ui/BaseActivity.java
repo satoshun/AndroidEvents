@@ -1,8 +1,11 @@
 package com.github.satoshun.events.ui;
 
-import android.os.Bundle;
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
+import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.github.satoshun.events.AndroidApplication;
 import com.github.satoshun.events.R;
@@ -12,19 +15,10 @@ public class BaseActivity extends AppCompatActivity {
 
     private Toolbar mActionBarToolbar;
 
-    private void setupNavDrawer() {
-    }
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        setupNavDrawer();
-    }
-
-    @Override
-    public void setContentView(int layoutResID) {
-        super.setContentView(layoutResID);
+    protected <T extends AppCompatActivity, M extends ViewDataBinding> M bindContentView(T activity, @LayoutRes int layoutResId) {
+        M binding = DataBindingUtil.setContentView(activity, layoutResId);
         getActionBarToolbar();
+        return binding;
     }
 
     protected Toolbar getActionBarToolbar() {
@@ -34,6 +28,7 @@ public class BaseActivity extends AppCompatActivity {
                 setSupportActionBar(mActionBarToolbar);
             }
         }
+
         return mActionBarToolbar;
     }
 

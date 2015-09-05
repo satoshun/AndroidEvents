@@ -1,8 +1,5 @@
-package com.github.satoshun.events.internal;
+package com.github.satoshun.events.network;
 
-import com.github.satoshun.events.network.Atnd;
-import com.github.satoshun.events.network.Connpass;
-import com.github.satoshun.events.network.Zusaar;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
