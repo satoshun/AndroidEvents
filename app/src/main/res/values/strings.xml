@@ -12,6 +12,7 @@
     <string name="action_search">Search</string>
 
     <string name="detail">詳細</string>
+    <string name="default_event_title">検索結果</string>
     <string name="event_transition">event_transition</string>
     <string name="register">登録</string>
     <string name="interest">興味があるワード</string>

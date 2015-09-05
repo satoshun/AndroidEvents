@@ -5,12 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.github.satoshun.events.R;
 import com.github.satoshun.events.domain.Events.Event;
 import com.github.satoshun.events.ui.EventDetailActivity;
 import com.github.satoshun.events.ui.domain.EventInteractor;
+import com.github.satoshun.events.ui.domain.SearchHistoryInteractor;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -23,14 +25,20 @@ import rx.subscriptions.CompositeSubscription;
 
 public class EventPresenterImpl implements EventPresenter, Observer<List<Event>> {
 
-    private EventInteractor eventInteractor;
+    private final static int DEFAULT_TITLE_ID = R.string.default_event_title;
+
+    private final EventInteractor eventInteractor;
+    private final SearchHistoryInteractor searchHistoryInteractor;
+    private final CompositeSubscription composition = new CompositeSubscription();
+
     private EventView eventView;
-    private CompositeSubscription composition = new CompositeSubscription();
     private String currentKeyword;
 
     @Inject
-    public EventPresenterImpl(EventInteractor eventInteractor) {
+    public EventPresenterImpl(EventInteractor eventInteractor,
+                              SearchHistoryInteractor searchHistoryInteractor) {
         this.eventInteractor = eventInteractor;
+        this.searchHistoryInteractor = searchHistoryInteractor;
     }
 
     @Override
@@ -46,6 +54,7 @@ public class EventPresenterImpl implements EventPresenter, Observer<List<Event>>
         View titleView = rootView.findViewById(R.id.title);
         if (titleView == null) {
             eventView.startIntent(intent);
+            return;
         }
 
         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(context,
@@ -83,9 +92,19 @@ public class EventPresenterImpl implements EventPresenter, Observer<List<Event>>
     public void onNext(List<Event> events) {
         Collections.sort(events, STARTED_DESC);
         eventView.renderEvents(events);
-        eventView.setTitle(currentKeyword);
         eventView.hideRefreshDialog();
         eventView.showContentView();
+        eventView.clearCurrentFocus();
+
+        if (TextUtils.isEmpty(currentKeyword)) {
+            eventView.setTitle(DEFAULT_TITLE_ID);
+        } else {
+            eventView.setTitle(currentKeyword);
+        }
+
+        if (!TextUtils.isEmpty(currentKeyword)) {
+            searchHistoryInteractor.registerKeyword(currentKeyword);
+        }
     }
 
     private void search() {

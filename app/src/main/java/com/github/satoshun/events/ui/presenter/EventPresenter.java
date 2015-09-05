@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.view.View;
 
 import com.github.satoshun.events.domain.Events.Event;
@@ -25,5 +26,7 @@ public interface EventPresenter extends Presenter<EventPresenter.EventView> {
         void showErrorView();
         void showContentView();
         void setTitle(String keyword);
+        void setTitle(@StringRes int id);
+        void clearCurrentFocus();
     }
 }

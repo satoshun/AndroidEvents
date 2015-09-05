@@ -2,6 +2,7 @@ package com.github.satoshun.events.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.StringRes;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -105,7 +106,7 @@ public class EventFragment extends BaseFragment implements EventPresenter.EventV
     }
 
     private void initSearchView(MenuItem item) {
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -160,5 +161,15 @@ public class EventFragment extends BaseFragment implements EventPresenter.EventV
     @Override
     public void setTitle(String keyword) {
         getActivity().setTitle(keyword);
+    }
+
+    @Override
+    public void setTitle(@StringRes int id) {
+        getActivity().setTitle(id);
+    }
+
+    @Override
+    public void clearCurrentFocus() {
+        getActivity().getCurrentFocus().clearFocus();
     }
 }
