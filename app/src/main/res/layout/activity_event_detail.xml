@@ -4,6 +4,7 @@
     <data>
         <import type="android.text.Html" />
         <variable name="event" type="com.github.satoshun.events.domain.Events.Event"/>
+        <variable name="dateFormat" type="java.text.SimpleDateFormat"/>
     </data>
 
     <RelativeLayout
@@ -64,7 +65,16 @@
                     android:text="@{event.address()}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="14dp" />
+                    android:layout_marginBottom="6dp" />
+
+                <TextView
+                    android:id="@+id/started_at"
+                    android:layout_below="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{dateFormat.format(event.startedAt())}"
+                    android:layout_marginBottom="14dp"
+                    style="@style/Address.Event" />
 
                 <TextView
                     android:id="@+id/long_description"

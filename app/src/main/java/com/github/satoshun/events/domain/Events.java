@@ -20,6 +20,7 @@ public interface Events {
         Date startedAt();
         Date endedAt();
         boolean isValid();
+        Date updatedAt();
     }
 }
 

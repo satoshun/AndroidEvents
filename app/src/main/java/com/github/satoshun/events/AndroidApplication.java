@@ -3,6 +3,7 @@ package com.github.satoshun.events;
 import android.app.Application;
 
 import com.github.satoshun.events.internal.AppComponent;
+import com.github.satoshun.events.internal.AppModule;
 import com.github.satoshun.events.internal.DaggerAppComponent;
 
 public class AndroidApplication extends Application {
@@ -14,9 +15,11 @@ public class AndroidApplication extends Application {
         super.onCreate();
     }
 
-    public static AppComponent getAppComponent() {
+    public AppComponent getAppComponent() {
         if (component == null) {
-            component = DaggerAppComponent.create();
+            component = DaggerAppComponent.builder()
+                    .appModule(new AppModule(this))
+                    .build();
         }
         return component;
     }

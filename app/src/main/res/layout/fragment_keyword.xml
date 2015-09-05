@@ -15,12 +15,14 @@
                 android:id="@android:id/list" />
         </android.support.v4.widget.SwipeRefreshLayout>
 
-        <Button
-            android:id="@+id/error"
-            android:text="@string/error"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/action_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
+            android:src="@android:drawable/ic_input_add"/>
 
     </FrameLayout>
 </layout>

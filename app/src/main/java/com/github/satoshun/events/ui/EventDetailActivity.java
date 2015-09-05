@@ -11,12 +11,17 @@ import android.view.View;
 import com.github.satoshun.events.R;
 import com.github.satoshun.events.databinding.ActivityEventDetailBinding;
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 import static com.github.satoshun.events.domain.Events.Event;
 
 public class EventDetailActivity extends BaseActivity  {
 
     private final static String TAG = "EventDetailActivity";
     private final static String INTENT_EVENT = "INTENT_EVENT";
+
+    private final static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss ~", Locale.ENGLISH);
 
     public static Intent callingIntent(Context context, Event event) {
         Intent intent = new Intent(context, EventDetailActivity.class);
@@ -43,6 +48,7 @@ public class EventDetailActivity extends BaseActivity  {
         setTitle(event.title());
 
         binding.setEvent(event);
+        binding.setDateFormat(DATE_FORMAT);
         binding.detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

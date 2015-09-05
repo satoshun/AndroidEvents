@@ -17,7 +17,7 @@ import android.widget.AdapterView;
 import com.github.satoshun.events.R;
 import com.github.satoshun.events.databinding.FragmentEventBinding;
 import com.github.satoshun.events.ui.presenter.EventPresenter;
-import com.github.satoshun.events.widget.EventAdapter;
+import com.github.satoshun.events.ui.adapter.EventAdapter;
 
 import java.util.List;
 
@@ -27,9 +27,16 @@ import static com.github.satoshun.events.domain.Events.Event;
 
 public class EventFragment extends BaseFragment implements EventPresenter.EventView {
 
+    private static final String INTENT_SEARCH_WORD = "INTENT_SEARCH_WORD";
+
     public static EventFragment newInstance() {
+        return newInstance("");
+    }
+
+    public static EventFragment newInstance(String word) {
         EventFragment fragment = new EventFragment();
         Bundle args = new Bundle();
+        args.putString(INTENT_SEARCH_WORD, word);
         fragment.setArguments(args);
         return fragment;
     }
@@ -72,25 +79,16 @@ public class EventFragment extends BaseFragment implements EventPresenter.EventV
                 eventPresenter.refresh();
             }
         });
-    }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+        binding.error.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eventPresenter.refresh();
+            }
+        });
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (eventAdapter.isEmpty()) {
-            eventPresenter.initialize();
-            binding.refresh.post(new Runnable() {
-                @Override
-                public void run() {
-                    showRefreshDialog();
-                }
-            });
-        }
+        String keyword = getArguments().getString(INTENT_SEARCH_WORD);
+        eventPresenter.inputSearchText(keyword);
     }
 
     @Override
@@ -145,5 +143,22 @@ public class EventFragment extends BaseFragment implements EventPresenter.EventV
     @Override
     public void hideRefreshDialog() {
         binding.refresh.setRefreshing(false);
+    }
+
+    @Override
+    public void showErrorView() {
+        binding.error.setVisibility(View.VISIBLE);
+        binding.refresh.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showContentView() {
+        binding.error.setVisibility(View.GONE);
+        binding.refresh.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void setTitle(String keyword) {
+        getActivity().setTitle(keyword);
     }
 }

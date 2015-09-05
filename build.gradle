@@ -30,14 +30,15 @@ ext {
     compileSdkVersion = 23
     targetSdkVersion = 22
 
-    support = 'com.android.support:appcompat-v7:23.0.0'
-    design =  'com.android.support:design:23.0.0'
+    support = 'com.android.support:appcompat-v7:23.0.1'
+    design =  'com.android.support:design:23.0.1'
     rxJava = 'io.reactivex:rxjava:1.0.14'
     rxAndroid = 'io.reactivex:rxandroid:1.0.1'
     retrofit = 'com.squareup.retrofit:retrofit:1.9.0'
     okhttp = 'com.squareup.okhttp:okhttp:2.4.0'
     okhttpUrlConnection = 'com.squareup.okhttp:okhttp-urlconnection:2.4.0'
     gson = 'com.google.code.gson:gson:2.3.1'
+    sqlbrite  = 'com.squareup.sqlbrite:sqlbrite:0.3.1'
     jsr250 = 'javax.annotation:jsr250-api:1.0'
     dagger = 'com.google.dagger:dagger:2.0.1'
     daggerCompiler = 'com.google.dagger:dagger-compiler:2.0.1'

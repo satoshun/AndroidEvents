@@ -1,0 +1,25 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" >
+
+    <data>
+        <variable name="keyword" type="String"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/card_padding_horizontal"
+        android:paddingRight="@dimen/card_padding_horizontal"
+        android:paddingTop="@dimen/card_padding_vertical"
+        android:paddingBottom="@dimen/card_padding_vertical">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{keyword}"
+            style="@style/Title.Event" />
+
+    </RelativeLayout>
+
+</layout>

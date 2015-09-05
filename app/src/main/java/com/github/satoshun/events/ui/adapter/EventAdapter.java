@@ -1,4 +1,4 @@
-package com.github.satoshun.events.widget;
+package com.github.satoshun.events.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,30 +17,14 @@ import java.util.Locale;
 
 import rx.functions.Action1;
 
-public class EventAdapter extends BaseAdapter implements Action1<List<? extends Event>> {
+public class EventAdapter extends RxAdapter<Event> {
 
     private final static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
 
-    private List<? extends Event> events = Collections.emptyList();
     private LayoutInflater inflater;
 
     public EventAdapter(Context context) {
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    }
-
-    @Override
-    public int getCount() {
-        return events.size();
-    }
-
-    @Override
-    public Event getItem(int position) {
-        return events.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
     }
 
     @Override
@@ -58,11 +42,4 @@ public class EventAdapter extends BaseAdapter implements Action1<List<? extends 
         binding.setDateFormat(DATE_FORMAT);
 
         return view;
-    }
-
-    @Override
-    public void call(List<? extends Event> events) {
-        this.events = events;
-        notifyDataSetChanged();
-    }
-}
+    }}

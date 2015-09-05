@@ -34,20 +34,9 @@ public class EventPresenterImpl implements EventPresenter, Observer<List<Event>>
     }
 
     @Override
-    public void initialize() {
-        currentKeyword = null;
-        eventView.showRefreshDialog();
-        composition.add(eventInteractor.search()
-                .subscribe(this));
-    }
-
-    @Override
     public void inputSearchText(String keyword) {
-        keyword = keyword.trim();
-        currentKeyword = keyword;
-        eventView.showRefreshDialog();
-        composition.add(eventInteractor.search(keyword)
-                .subscribe(this));
+        currentKeyword =  keyword.trim();
+        search();
     }
 
     @Override
@@ -68,7 +57,7 @@ public class EventPresenterImpl implements EventPresenter, Observer<List<Event>>
     @Override
     public void refresh() {
         eventView.showRefreshDialog();
-        inputSearchText(currentKeyword);
+        search();
     }
 
     @Override
@@ -87,13 +76,22 @@ public class EventPresenterImpl implements EventPresenter, Observer<List<Event>>
 
     @Override
     public void onError(Throwable e) {
+        eventView.showErrorView();
     }
 
     @Override
     public void onNext(List<Event> events) {
         Collections.sort(events, STARTED_DESC);
         eventView.renderEvents(events);
+        eventView.setTitle(currentKeyword);
         eventView.hideRefreshDialog();
+        eventView.showContentView();
+    }
+
+    private void search() {
+        eventView.showRefreshDialog();
+        composition.add(eventInteractor.search(currentKeyword)
+                .subscribe(this));
     }
 
     private static final Comparator<Event> STARTED_DESC = new Comparator<Event>() {

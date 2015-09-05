@@ -8,6 +8,7 @@
     <color name="theme_accent_2">#e91e63</color>
 
     <color name="white">#ffffff</color>
+    <color name="gray">#cccccc</color>
     <color name="red">#aa3333</color>
     <color name="light_red">#cc5555</color>
 </resources>

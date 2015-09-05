@@ -13,4 +13,10 @@ public class PresenterModule {
     public EventPresenter provideEventPresenter(EventPresenterImpl eventPresenter) {
         return eventPresenter;
     }
+
+    @Singleton
+    @Provides
+    public SearchHistoryPresenter provideSearchHistoryPresenter(SearchHistoryPresenterImpl searchHistoryPresenter) {
+        return searchHistoryPresenter;
+    }
 }

@@ -72,6 +72,11 @@ public class AtndResponse implements Events {
                     && title() != null
                     && url() != null;
         }
+
+        @Override
+        public Date updatedAt() {
+            return event.updated_at;
+        }
     }
 
     public static class AtndEvent {
@@ -88,5 +93,6 @@ public class AtndResponse implements Events {
         public int accepted;
         public int limit;
         public int waiting;
+        public Date updated_at;
     }
 }

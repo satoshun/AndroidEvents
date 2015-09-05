@@ -15,12 +15,5 @@
                 android:id="@android:id/list" />
         </android.support.v4.widget.SwipeRefreshLayout>
 
-        <Button
-            android:id="@+id/error"
-            android:text="@string/error"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
     </FrameLayout>
 </layout>

@@ -2,6 +2,8 @@ package com.github.satoshun.events.internal;
 
 import android.content.Context;
 
+import com.github.satoshun.events.AndroidApplication;
+import com.github.satoshun.events.model.EventDatabase;
 import com.github.satoshun.events.model.ModelModule;
 import com.github.satoshun.events.network.NetworkModule;
 import com.github.satoshun.events.ui.EventFragment;
@@ -13,19 +15,20 @@ import com.github.satoshun.events.ui.presenter.PresenterModule;
 import javax.inject.Singleton;
 
 import dagger.Component;
+import dagger.Module;
+import dagger.Provides;
 
-@Singleton
-@Component(modules = {
-        AppModule.class,
-        NetworkModule.class,
-        PresenterModule.class,
-        DomainModule.class,
-        ModelModule.class
-})
-public interface AppComponent {
-    void inject(MainActivity mainActivity);
-    void inject(EventFragment fragment);
-    void inject(SearchHistoryFragment fragment);
+@Module
+public class AppModule {
 
-    Context context();
+    private final AndroidApplication application;
+
+    public AppModule(AndroidApplication application) {
+        this.application = application;
+    }
+
+    @Provides
+    public Context provideContext() {
+        return application;
+    }
 }

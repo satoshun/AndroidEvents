@@ -33,6 +33,7 @@ public class ZusaarResponse implements Events {
         public String place;
         public int accepted;
         public int waiting;
+        public Date updated_at;
 
         @Override
         public String title() {
@@ -84,6 +85,11 @@ public class ZusaarResponse implements Events {
             return startedAt() != null
                     && title() != null
                     && url() != null;
+        }
+
+        @Override
+        public Date updatedAt() {
+            return updated_at;
         }
     }
 }
