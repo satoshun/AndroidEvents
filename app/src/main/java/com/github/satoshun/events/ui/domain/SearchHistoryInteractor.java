@@ -5,8 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.github.satoshun.events.model.EventContract;
-import com.github.satoshun.events.model.EventDatabase;
+import com.github.satoshun.events.persistence.EventContract;
+import com.github.satoshun.events.persistence.EventDatabase;
 
 import javax.inject.Inject;
 

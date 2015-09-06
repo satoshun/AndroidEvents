@@ -1,4 +1,4 @@
-package com.github.satoshun.events.model;
+package com.github.satoshun.events.persistence;
 
 
 import android.content.Context;
@@ -9,7 +9,7 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class ModelModule {
+public class PersistenceModule {
 
     @Singleton
     @Provides

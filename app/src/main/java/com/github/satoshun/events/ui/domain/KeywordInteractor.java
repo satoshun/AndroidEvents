@@ -5,8 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.github.satoshun.events.model.EventContract;
-import com.github.satoshun.events.model.EventDatabase;
+import com.github.satoshun.events.persistence.EventContract;
+import com.github.satoshun.events.persistence.EventDatabase;
 import com.squareup.sqlbrite.BriteDatabase;
 import com.squareup.sqlbrite.SqlBrite;
 

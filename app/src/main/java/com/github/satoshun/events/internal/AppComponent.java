@@ -2,7 +2,7 @@ package com.github.satoshun.events.internal;
 
 import android.content.Context;
 
-import com.github.satoshun.events.model.ModelModule;
+import com.github.satoshun.events.persistence.PersistenceModule;
 import com.github.satoshun.events.network.NetworkModule;
 import com.github.satoshun.events.ui.EventFragment;
 import com.github.satoshun.events.ui.SearchHistoryFragment;
@@ -20,7 +20,7 @@ import dagger.Component;
         NetworkModule.class,
         PresenterModule.class,
         DomainModule.class,
-        ModelModule.class
+        PersistenceModule.class
 })
 public interface AppComponent {
     void inject(MainActivity mainActivity);

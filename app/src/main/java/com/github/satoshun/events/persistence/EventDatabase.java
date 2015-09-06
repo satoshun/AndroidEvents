@@ -1,4 +1,4 @@
-package com.github.satoshun.events.model;
+package com.github.satoshun.events.persistence;
 
 
 import android.content.Context;
