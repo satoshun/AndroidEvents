@@ -1,7 +1,9 @@
 package com.github.satoshun.events.ui;
 
 import android.os.Bundle;
+import android.support.v7.widget.PopupMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -57,6 +59,14 @@ public class SearchHistoryFragment extends BaseFragment implements SearchHistory
                 presenter.onHistoryClicked(word);
             }
         });
+        binding.list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                String word = (String) parent.getItemAtPosition(position);
+                presenter.onHistoryLongClicked(view, word);
+                return true;
+            }
+        });
         presenter.initialize();
     }
 
@@ -69,5 +79,25 @@ public class SearchHistoryFragment extends BaseFragment implements SearchHistory
     public void showEventFragment(String word) {
         EventFragment fragment = EventFragment.newInstance(word);
         ((MainActivity) getActivity()).toFragment(fragment);
+    }
+
+    @Override
+    public void showPopupMenu(View anchor, final String keyword) {
+        PopupMenu popupMenu = new PopupMenu(getContext(), anchor);
+        popupMenu.getMenuInflater().inflate(R.menu.search_history, popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_delete:
+                        presenter.removeKeyword(keyword);
+                        break;
+                    default:
+                        return false;
+                }
+                return true;
+            }
+        });
+        popupMenu.show();
     }
 }

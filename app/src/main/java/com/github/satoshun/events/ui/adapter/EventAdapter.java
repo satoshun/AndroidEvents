@@ -42,4 +42,5 @@ public class EventAdapter extends RxAdapter<Event> {
         binding.setDateFormat(DATE_FORMAT);
 
         return view;
-    }}
+    }
+}

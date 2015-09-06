@@ -1,6 +1,7 @@
 package com.github.satoshun.events.ui.presenter;
 
 import android.util.Log;
+import android.view.View;
 
 import com.github.satoshun.events.ui.domain.SearchHistoryInteractor;
 
@@ -38,8 +39,19 @@ public class SearchHistoryPresenterImpl implements SearchHistoryPresenter {
     }
 
     @Override
+    public void removeKeyword(String keyword) {
+        searchHistoryInteractor.removeKeyword(keyword);
+        initializeKeywords();
+    }
+
+    @Override
     public void onHistoryClicked(String word) {
         searchHistoryView.showEventFragment(word);
+    }
+
+    @Override
+    public void onHistoryLongClicked(View view, String keyword) {
+        searchHistoryView.showPopupMenu(view, keyword);
     }
 
     private void initializeKeywords() {

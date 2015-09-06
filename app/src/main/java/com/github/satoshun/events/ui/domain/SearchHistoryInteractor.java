@@ -54,6 +54,13 @@ public class SearchHistoryInteractor {
         } catch (SQLiteConstraintException ignored) {}
     }
 
+    public void removeKeyword(String keyword) {
+        final SQLiteDatabase db = eventDatabase.getWritableDatabase();
+        String tbName = EventContract.KeywordEntry.TABLE_NAME;
+        db.execSQL("DELETE FROM " + tbName +
+                    " WHERE name = ?", new String[]{keyword});
+    }
+
     private ContentValues createKeyword(String keyword) {
         ContentValues values = new ContentValues();
         values.put(EventContract.KeywordEntry.COLUMN_NAME_TITLE, keyword);

@@ -43,7 +43,10 @@ public class EventPresenterImpl implements EventPresenter, Observer<List<Event>>
 
     @Override
     public void inputSearchText(String keyword) {
-        currentKeyword =  keyword.trim();
+        if (keyword != null) {
+            keyword.trim();
+        }
+        currentKeyword = keyword;
         search();
     }
 

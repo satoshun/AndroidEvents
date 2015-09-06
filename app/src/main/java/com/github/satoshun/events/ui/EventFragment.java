@@ -33,7 +33,7 @@ public class EventFragment extends BaseFragment implements EventPresenter.EventV
     private static final String INTENT_SEARCH_WORD = "INTENT_SEARCH_WORD";
 
     public static EventFragment newInstance() {
-        return newInstance("");
+        return newInstance(null);
     }
 
     public static EventFragment newInstance(String word) {
