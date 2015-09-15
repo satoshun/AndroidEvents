@@ -103,6 +103,13 @@ public class EventFragment extends BaseFragment implements EventPresenter.EventV
         initSearchView(item);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        eventPresenter.clear();
+    }
+
     private void initSearchView(MenuItem item) {
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
