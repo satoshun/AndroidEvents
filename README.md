@@ -2,6 +2,8 @@
 
 It's a Android App for searching events from event webapi.
 
+<img src="https://i.gyazo.com/ae372ed813c27e68fda5ac9de2093554.gif" alt="Application git animation" style="height: 200px;"/>
+
 
 ## tech-feature
 
