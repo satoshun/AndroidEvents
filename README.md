@@ -1,4 +1,4 @@
-# Events
+# Search Event Application
 
 It's a Android App for searching events from event webapi.
 
@@ -11,6 +11,11 @@ It's a Android App for searching events from event webapi.
 - Used RxJava with Retrofit
 - Used Dagger2 library
 - Used Data-Binding library
+
+
+## reference
+
+- [MVP for Android: how to organize the presentation layer](http://antonioleiva.com/mvp-android/)
 
 
 ## license
