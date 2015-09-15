@@ -76,6 +76,7 @@ public class EventFragment extends BaseFragment implements EventPresenter.EventV
                 eventPresenter.onItemClicked(getActivity(), view, event);
             }
         });
+
         binding.refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -95,16 +96,11 @@ public class EventFragment extends BaseFragment implements EventPresenter.EventV
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-    }
-
-    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-       inflater.inflate(R.menu.main, menu);
-       MenuItem item = menu.findItem(R.id.action_search);
-       initSearchView(item);
+        inflater.inflate(R.menu.main, menu);
+        MenuItem item = menu.findItem(R.id.action_search);
+        initSearchView(item);
     }
 
     private void initSearchView(MenuItem item) {

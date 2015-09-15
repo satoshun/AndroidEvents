@@ -1,13 +1,14 @@
 # Events
 
-Android App for searching events from event-webapi.
+It's a Android App for searching events from event webapi.
 
 
 ## tech-feature
 
 - Used MVP(Model-View-Presenter) pattern
 - Used RxJava with Retrofit
-- Used Data-Binding like ViewHolder pattern.
+- Used Dagger2 library
+- Used Data-Binding library
 
 
 ## license
